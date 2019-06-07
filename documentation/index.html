@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Documentation | VFM - Veno File Manager 3</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<style type="text/css">
+*{
+        box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+}
+img{
+    max-width: 100%;
+}
+    /* Custom Styles */
+    ul.nav-tabs li{
+        margin: 0;
+        border: none;
+        list-style: none;
+        padding: 0;
+        width: 100%;
+    }
+    ul.nav-tabs ul{
+        padding: 0;
+    }
+    
+    ul.nav-tabs li > a{
+        margin: 0;
+        padding: 8px 16px;
+        color: #e0dfdb;
+        border: none;
+        display: block;
+    }
+
+    ul.nav-tabs ul li a{
+        display: block;
+        padding: 6px 0;
+        padding-left: 25px;
+        font-size: 12px;
+    }
+    
+  .caret-right {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid;
+    display: inline-block;
+    height: 0;
+    vertical-align: center;
+    width: 0;
+    margin-right: 4px;
+}
+
+    ul.nav-tabs > li.active > a, ul.nav-tabs > li.active > a:hover{
+        color: #fff;
+        background: #60a1b2;
+        border: none;
+        -webkit-box-shadow:inset 0 0 4px 0 rgba(0,0,0,0.4);
+        box-shadow:inset 0 0 4px 0 rgba(0,0,0,0.4);
+    }
+    ul.nav-tabs > li > a:hover, ul.nav-tabs ul li a:hover, ul.nav-tabs ul li.active a{
+        color: #fff;
+        background: #172025;
+        text-decoration: none;
+    }
+    .nav-tabs > li > a{
+        border-radius: 0;
+    }
+
+.blockleft{
+    float: left;
+    width: 230px;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background:#212b30;
+}
+
+.blockleft > ul{
+    padding-bottom: 50px;
+}
+    .blockright{
+        float: left;
+        width: 100%;
+        padding-left: 230px;
+    }
+    .wrapper{
+        float: left;
+        width: 90%;
+        max-width: 960px;
+  }
+  #start{
+    float: left;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 50px;
+    background: #60a1b2;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  }
+  #start h1{
+    float: left;
+  }
+  .block{
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    max-width: 960px;
+  }
+  hr{
+    float: left;
+    width: 100%;
+    clear: both;
+  }
+
+  @media (max-width: 767px) {
+    .blockright{
+        padding: 0;
+    }
+    .blockleft{
+        display: none;
+    }
+    #start h1{
+    }
+  }
+</style>
+</head>
+<body data-spy="scroll" data-target=".blockleft">
+    <div class="blockleft">
+            <div class="text-center form-group">
+                <img src="assets/images/logo2.svg" style="margin-top: 30px;"> 
+            </div>
+            <ul class="nav nav-tabs nav-stacked clear">
+                <li class="active"><a href="#start">Start</a></li>
+                <li><a href="#install">Installation</a></li>
+                <li><a href="#migration">Migration</a>
+                <li><a href="#options">Options</a>
+                    <ul>
+                        <li><a href="#allowed"><span class="caret-right"></span> Allowed extensions</a></li>
+                        <li><a href="#prettylink"><span class="caret-right"></span> Pretty links</a></li>
+                        <li><a href="#thumbs"><span class="caret-right"></span> Thumbnails</a></li>
+                        <li><a href="#zip"><span class="caret-right"></span> .zip folders and multiple files</a></li>
+                        <li><a href="#uploadnotif"><span class="caret-right"></span> Upload notifications</a></li>
+                        <li><a href="#remoteupload"><span class="caret-right"></span> Remote upload</a></li>
+                    </ul>
+                </li>
+                <li><a href="#email">Email settings</a></li>
+                <li><a href="#filesharing">File sharing</a>
+                    <ul>
+                        <li><a href="#lifetime"><span class="caret-right"></span> downloads expiration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#users">Users</a>
+                    <ul>
+                        <li><a href="#permissions"><span class="caret-right"></span> Permissions</a></li>
+                        <li><a href="#registration"><span class="caret-right"></span> Registration</a></li>
+                        <li><a href="#maxquota"><span class="caret-right"></span> Max user quota</a></li>
+                        <li><a href="#avatars"><span class="caret-right"></span> Profile picture</a></li>
+                        <li><a href="#custom-fields"><span class="caret-right"></span> Custom fields</a></li>
+                        <li><a href="#privacy"><span class="caret-right"></span> Privacy policy</a></li>
+                    </ul>
+                </li>
+                <li><a href="#customization">Appearance</a>
+                    <ul>
+                        <li><a href="#skins"><span class="caret-right"></span> Skins</a></li>
+                        <li><a href="#templates"><span class="caret-right"></span> Templates</a></li>
+                        <li><a href="#audio-notif"><span class="caret-right"></span> Audio notifications</a></li>
+                    </ul>
+                </li>
+                <li><a href="#language">Translations</a></li>
+                <li><a href="#stats">Statistics</a></li>
+                <li><a href="#recover">Password recovering</a></li>
+                <li><a href="#notes">Notes</a>
+                    <ul>
+                        <li><a href="#errors"><span class="caret-right"></span> Track errors</a></li>
+                        <li><a href="#bigfiles"><span class="caret-right"></span> upload BIG files</a></li>
+                        <li><a href="#hotlink"><span class="caret-right"></span> hotlinking</a></li>
+                        <li><a href="#stylah"><span class="caret-right"></span> credits</a></li>
+                        <li><a href="#disclaimer"><span class="caret-right"></span> disclaimer</a></li>
+                    </ul>
+                </li>
+            </ul>
+    </div>
+
+        <div class="blockright">
+
+            <div id="start">
+                <h1 class="lead">Veno File Manager 3</h1>
+            </div>
+<section class="block">
+                    <p>
+                    Thank you for purchasing <strong>Veno File Manager 3.</strong><br>
+                    If you have any questions that are beyond the scope of this help file, 
+                    visit the <a target="_blank" href="http://veno.es/support/categories/veno-file-manager"> Support forum.</a><br>
+                    or feel free to email via the <a target="_blank" href="https://codecanyon.net/item/veno-file-manager-host-and-share-files/6114247/support/contact">support contact form</a>.<br><br>
+                    Thanks so much! 
+                    </p>
+                    <p><a target="blank" class="btn btn-info" href="http://filemanager.veno.it">filemanager.veno.it</a></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+</section>
+    <hr>
+<section class="block" id="install">
+
+            <h2>Installation</h2>
+            <p>Copy all files contained inside the “VFM” folder to your web space via FTP (put everything in the root if you will use the whole domain as file manager, otherwise create a custom directory and upload everything in it).
+            </p>
+            <img class="img-responsive" src="assets/images/script-files.png">
+            <p> Navigate with your browser to the url where you uploaded the files,</br>
+            if it's your first run the script should redirect you to the /vfm-admin/ login</p>
+
+
+                <img class="img-responsive" src="assets/images/adminlink.jpg"><br>
+                log in as: 
+                <ul>
+                    <li><strong>user:</strong> admin</li>
+                    <li><strong>password:</strong> password</li>
+                </ul>
+                <p>Inside the administration area, go under USERS and update your <strong>Master Admin</strong> credentials (password and username).</p>
+
+                <p>That’s all! go back to the VFM front-end and start building your archive with basic settings.</p>
+
+            <h3>Uploads Directory</h3>
+            <p>By default VFM keeps uploaded files inside the directory called <strong>uploads</strong>, and creates sub directories in it.</p>
+
+            <p>If you want to rename the main <strong>Uploads Directory</strong>, do it from the Administration panel, this way the system will rename the folder and will update configuration settings as well.</p>
+
+            <p>You can use VFM also with preexistent archives uploadnig<br>
+            <code>.htaccess</code><br>
+            <code>index.php</code><br>
+            <code>vfm-thumb.php</code><br>
+            <code>/vfm-admin/</code><br>
+             at the same level of your main uploads' directory, and updating the <strong>Uploads Directory</strong> field under general settings</p>
+</section>
+    <hr>
+
+
+        <section class="block" id="migration">
+            <h2>Migration</h2>
+            <p>If you are moving the script already installed and configured in a new location (from local to server, from server to local, or in a different directory) remember to update the value <strong>URL of your app</strong> under Preferences > general settings.</p>
+            <p>This should be always the full URL of your application, with a final slash / ( e.g. http://www.example.com/ )</p>
+        </section>
+
+<section class="block" id="options">
+            <h2>Options</h2>
+            <p>To best fit your needs you have an <strong>administration</strong> panel where you can choose many options</p>
+            <p><img class="img-responsive" src="assets/images/settings.jpg"></p>
+<hr>
+
+            <h3 id="allowed">Allowed extensions</h3>
+            <p>From general settings you can choose if to exclude some file extensions, or if you prefer, to only allow some extensions (and exclude all the others).</p>
+            <p><img class="img-responsive" src="assets/images/allow.jpg"></p>
+
+<hr>
+
+           <h3 id="prettylink">Pretty links</h3>
+
+            <p>If you activate Pretty links, the script will convert download urls from <code>/vfm-admin/vfm-downloader.php?q=xxx</code>
+             to <code>/download/xxx</code>.<br>
+             This option needs the <code>.htaccess</code> provided in the main directory of the script, and the Apache Module <strong>mod_rewrite</strong> on your server.</p>
+
+<h4>For NGINX Servers try the following configuration:</h4>
+<p><strong>Script running in sub directory (e.g: www.example.com/RELATIVE_PATH )</strong></p>
+
+<pre>
+# nginx VFM configuration
+
+location /RELATIVE_PATH {
+    index index.php;
+    rewrite /download/(.*)/h/(.*)/sh/(.*) /RELATIVE_PATH/vfm-admin/vfm-downloader.php?q=$1&h=$2&sh=$3 last;
+    rewrite /download/(.*)/h/(.*) /RELATIVE_PATH/vfm-admin/vfm-downloader.php?q=$1&h=$2 last;
+    rewrite /download/zip/(.*)/n/(.*) /RELATIVE_PATH/vfm-admin/vfm-downloader.php?zip=$1&n=$2 last;
+}
+
+</pre>
+
+<h4>For IIS Servers try to convert the following rules:</h4>
+<p><a target="_blank" href="https://www.iis.net/learn/extensions/url-rewrite-module/importing-apache-modrewrite-rules">
+    Importing Apache mod_rewrite Rules in IIS 7 and above</a></p>
+<p><strong>Script running in web root (e.g: www.example.com/ )</strong></p>
+<p>if the script is not inside the web root, change the `RewriteBase` path</p>
+
+<pre>
+# begin VFM rules
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule download/(.*)/h/(.*)/sh/(.*) vfm-admin/vfm-downloader.php?q=$1&h=$2&sh=$3 [L]
+RewriteRule download/(.*)/h/(.*) vfm-admin/vfm-downloader.php?q=$1&h=$2 [L]
+RewriteRule download/zip/(.*)/n/(.*) vfm-admin/vfm-downloader.php?zip=$1&n=$2 [L]
+&lt;/IfModule&gt;
+# end VFM rules
+</pre>
+
+<hr>
+            <h3 id="thumbs">Thumbnails</h3>
+            <p>The script uses GD Library to create thumbnails. If the process fails (very big images and low server memory) a placeholder will be used as thumbnail.</p> 
+            <p><img class="img-responsive" src="assets/images/placeholder.jpg"></p>
+            <p>You can edit the default <strong>placeholder.jpg</strong> inside <code>/vfm-admin/images/</code></p>
+            <p><del>You could also try to open the file <code>vfm-thumb.php</code> and increase your server's memory limit removing the comment on line 20 and adjusting the value: <code>ini_set('memory_limit', '512M');</code></del></p>
+            <p><strong>UPDATE: </strong>Since version 2.6.1 the script automatically tries to set an higher <code>memory_limit</code> if needed, so if you see the placeholder, the server is actually not able to increase its memory to that value.</p>
+<hr>
+           <h3 id="zip">.zip multiple files</h3>
+            <p>In order to prevent timeouts and server errors during the zip process, the script is limited to .zip files up to 1 GB, and 2000 items max together;<br> if the values are exceeded, it asks you to download less files.</p>
+            <p>You can adjust these values if your server is more or less performant, changing <code>Max Files</code> and <code>Max File Size</code> under general settings</p>
+<hr>
+           <h3 id="uploadnotif">Upload notifications</h3>
+           <p>If the option <strong>Send upload notifications to other users</strong> is active, any user with an e-mail address associated will be able to select the other users who can access to the current directory and send them automatic upload notifications</p>
+           <p><img class="img-responsive" src="assets/images/notif1.jpg"></p>
+           <p><img class="img-responsive" src="assets/images/notif2.jpg"></p>
+
+<hr>
+
+           <h3 id="remoteupload">Remote upload</h3>
+           <p>If the option <strong>Remote upload</strong> (under permissions) is active, you will be able to upload files directly from remote urls.</p>
+           <p><img class="img-responsive" src="assets/images/remote-upload.png"></p>
+           <p><img class="img-responsive" src="assets/images/remote-upload-zoom.png"></p>
+           <p>NOTE: the remote uploader is subject to the server upload limits, so if you want to upload big files you should possibly increase the following values via htaccess:</p>
+           <pre>
+           	php_value upload_max_filesize 100M
+           	php_value post_max_size 128M
+           </pre>
+           <p>Adjust to your needs and set <code>post_max_size</code> always higher than <code>upload_max_filesize</code></p>
+
+</section>
+
+    <hr>
+<section class="block" id="email">
+            <h2>Email settings</h2>
+            
+            <p><strong>File sharing</strong>, <strong>New user notification</strong> and <strong>Password Recovering</strong> use <a target="_blank" href="https://github.com/PHPMailer/PHPMailer">PHPmailer</a>, with the possibility to choose between the <strong>php mail()</strong> funcion (default), or <strong>SMTP mail</strong>.</p>
+
+            <p>Using the same server of your installation as primary email is strongly recommended, to avoid being flagged as spam.<br>
+            (e.g: if the script is running on www.example.com, the mail sender should be something like noreply@example.com, or info@example.com)</p>
+
+            <p><img class="img-responsive" src="assets/images/mail-settings.jpg"></p>
+
+            <p><strong>NOTE</strong>: If you haven't set SMTP mail and the script says "message sent", but you don't receive any e-mail, probabily your server refuses to send <code>mail()</code> in HTML format, so setting up a SMTP account should solve the problem.</p>
+
+            <p>SMTP connection errors can be tracked setting <strong>DEBUG SMTP</strong> ON</p>
+
+</section>
+  <hr>
+<section class="block" id="email-template">
+            <h2>E-mail template</h2>
+            <p>you can customize your e-mail templates editing the following files: 
+                <ul>
+                    <li><code>vfm-admin/_content/mail-template/template-activate-account.html</code> (New account activation)</li>
+                    <li><code>vfm-admin/_content/mail-template/template-new-user.html</code> (send a notification to new user)</li>
+                    <li><code>vfm-admin/_content/mail-template/template-reset-password.html</code> (password recovering)</li>
+                    <li><code>vfm-admin/_content/mail-template/template-send-files.html</code> (file sharing)</li>
+                    <li><code>vfm-admin/_content/mail-template/template-uploaded-files.html</code> (Upload notification to other users)</li>
+                </ul>
+        
+            <p><strong>Variables</strong></p>
+            <pre>&lt;img src="cid:logoimg" /&gt;</pre> 
+            <p>A custom header image can be uploaded from Preferences > E-Mail</p>
+
+            <pre>%translate_value%</pre> 
+            <p>translatable values editable from the language manager (<strong>translate_</strong> followed by the translation key)</p>
+            <p><strong>Required</strong></p>
+            <pre>%any_other_value%</pre> 
+            <p>Dynamic variables like share link, app name, password recovery link</p>
+
+</section>
+    <hr>
+<section class="block" id="filesharing">
+            <h2>File sharing</h2>
+            <p>By default the system provides download links to copy-paste where you prefer</p>
+            <p>To enable E-mail file sharing you must compile the <strong>send system e-mails from</strong> field</p>
+            <h3>Password protection</h3>
+            <p>If password protection is enabled, any user will be able to choose a password or get a random password to protect sharing links</p>
+<hr>
+      <h3 id="lifetime">Expiration date for download links</h3>
+            <p>At the top of <code>vfm-admin/index.php</code> you will find the array who controls the dropdown menu with default values</p>
+            <pre class="prettyprint lang-php linenums">
+$share_lifetime = array(
+    // "days" => "menu value"
+    "1" => "24 h",
+    "2" => "48 h",
+    "3" => "72 h",
+    "5" => "5 days",
+    "7" => "7 days",
+    "10" => "10 days",
+    "30" => "30 days",
+    "365" => "1 year",
+    "36500" => "Unlimited (100 years)",
+    );</pre>
+            <p>Update the values and select the new date in the administration page</p>
+</section>
+  <hr>
+
+
+<section class="block" id="users">
+            <h2>Manage Users</h2>
+
+            <h4>Master Admin</h4>
+            <p>is the first User in configuration settings, and is the only who can't be deleted.</p>
+
+            <p>All the other users may have 3 types of roles:</p>
+
+            <h4>User</h4>
+            <p>is every user who can view and download files but have no rights to upload/edit/delete<br>
+                (only if VFM is set as private, otherwise everyone can view the lists and download the files)</p>
+
+            <h4>Admin</h4>
+            <p>is every user who can upload/edit/delete files
+                (set more or less permissions in preferences panel).</p>
+
+            <h4>SuperAdmin</h4>
+            <p>Every user who can upload/edit/delete files and access everywhere, including adminstration panel
+                 (set more or less permissions in preferences panel).</p>
+
+            <h3 id="permissions">Permissions</h3>
+
+            <p>Since version 3.3 the role "User" has 2 optional permissions: Upload Files and Create New Folders.</p>
+
+            <p>Since version 2.9.2 can be enabled the remote uploader, and will be available to all the users with upload permissions</p>
+            <p><img class="img-responsive" src="assets/images/permissions.jpg"></p>
+
+            <h3 id="registration">Registration</h3>
+            <p>You can choose which role to assign to all new registrations, which folder and how many space.<br>(the option <strong>New /username/ folder</strong>) creates a new folder for each registration, using the username)</p>
+            <p>To enable the self user Registration the <strong>send system e-mails from</strong> field must be compiled </p>
+            <p><img class="img-responsive" src="assets/images/registration.png"></p>
+            
+            <h4>Manage users</h4>
+            <p>In users panel you are able to:
+                <ul>
+                <li>update password, username and e-mail for <strong>Master Admin</strong>,</li>
+                <li>update password, username, role, e-mail, assign dedicated folder(s) for all pre-existing Users, and set a maximum available space</li>
+                <li>add New Users</li>
+                </ul>
+                </p>
+            <p>When adding or editing a user, if you type in "New Directory" field, a new folder inside the main uploads directory will be created for you, and added to the user's directories list (you can also assign pre-existing folders)</p>
+
+            <p><img class="img-responsive" src="assets/images/users.jpg"></p>
+
+            <h3 id="maxquota">Max user quota (available space)</h3>
+
+            <p>Available space will only affect users with dedicated folders and with the ability to upload files (Admin or SuperAdmin). If you set more than one directory per user, the limit will consider the sum of the assigned directories</p>
+
+            <p><strong>NOTE: </strong> Available space considers the space used inside of the assigned folder(s), so if you assign the same folder to more than one user, they will share the same space. (if you assign 100Mb to User01 inside folder01 and 100Mb to User02 inside the same folder, if User01 uploads 100Mb, User02 will have no more space, and viceversa)</p>
+
+            <p>You can change the default values (in MB) inside of 
+            <code>vfm-admin/index.php</code>
+            <pre class="prettyprint lang-php linenums">
+$_QUOTA = array(
+    "10",
+    "20",
+    "50",
+    "100",
+    "200",
+    "500",
+    );</pre>
+        </p>
+
+            <h3 id="avatars">Avatars (profile picture)</h3>
+            <p><img class="img-responsive" src="assets/images/default120.png"></p>
+            <p>Default avatar image is placed inside <code>vfm.admin/images/avatars/default.png</code></p>
+            <p>Minimum size for avatar images to upload: 100 x 100 pixels</p>
+
+            <h3  id="custom-fields">Custom Fields</h3>
+            <p>Since version 2.7 you can add some custom fields to every user (e.g: address, telephone...)</p>
+            <p>Edit te file /vfm-admin/users/<strong>customfields-example.php</strong>, there are 3 examples: a simple text input, a select input and a textarea.<br>After your editings rename the file in <strong>customfields.php</strong> (remove -example).<br>
+            The new additional fields will appear on every user's form: registration, administration panel, user's panel.</p>
+
+            <h3 id="privacy">Privacy policy</h3>
+            <p>To activate the "terms and conditions" checkbox, inside the registration form rename the file <code>_registration-disclaimer.html</code> in <code>registration-disclaimer.html</code> (remove the _underscore) and edit its contens.</p>
+
+
+            <p>To activate the "Privacy policy" link inside the footer, rename the file <code>_privacy-info.html</code> in <code>privacy-info.html</code> (remove the _underscore) and edit ist contents.</p>
+
+
+
+</section>
+    <hr>
+
+<section class="block" id="customization">
+            <h2 id="appearance">Appearance</h2>
+
+            <p>The panel <strong>Appearance</strong> includes a Skin selector, a customizer, and the options for the notification alerts</p>
+            <h3>Customizer</h3>
+            <ul>
+                <li>Custom logo for the Navigation Bar</li>
+                <li>Custom header image</li>
+                <li>Header layout (Boxed / Full)</li>
+                <li>Header image margins and alignment</li>
+                <li>Optional rich text description</li>
+            </ul>
+          
+            <h3 id="skins">Skins</h3>
+            <p>Choose between 26 skins and 5 progress bar variants</p>
+             All skins are stored inside <code>/vfm-admin/_content/skins/</code></p>
+
+            <p>To create your custom skin duplicate one of the existing, rename it and edit the new css file, then activate your new skin from the Administration panel.</p>
+            <p><img class="img-responsive" src="assets/images/selectskin.gif"></p>
+
+            <h3 id="templates">Templates</h3>
+
+            <p>Since version 1.6.6 you can also create your custom HTML template: copy the php files you wish to edit <br>
+                from folder <code>/vfm-admin/include/</code> <br>
+                to folder <code>/vfm-admin/_content/template/</code></p>
+            <p>Any template file may be included in the main <code>index.php</code> with the following code:</p>
+
+            <pre>
+            &lt;?php $template->getPart('filename'); ?&gt;
+
+            </pre>
+            <p>(replace 'filename' with the name of the template part you want to include, without <strong>.php</strong>)</p>
+            <p>If the script does not find the file inside the <code>/_content/template/</code> folder, it will take the default one inside of <code>/include/</code>
+            </p>
+
+            <h3 id="audio-notif">Audio notifications</h3>
+
+            <p>You can add your custom <strong>Audio notification after upload</strong> simply placing a new .mp3 file<br>
+             inside the folder <code>/vfm-admin/_content/audio/</code>, it will be a new voice under the dropdown menu (Appearance > Notifications)</p>
+
+
+</section>
+    <hr>
+<section class="block" id="language">
+
+            <h2>Translations</h2>
+            <p>VFM is expandable to every language! simply go to Language Manager, add new language and compile it or edit one of the pre-existing.</p>
+
+            <p>You may choose to set your default language and hide language menu from the front-end, or create your custom language collection by adding  some new and removing unwanted (English language is the only required)</p>
+            <p>Untranslated phrases will appear in your front end in this way: <strong>&gt;translate_key&lt;</strong></p>
+            <p><img class="img-responsive" src="assets/images/languagemanager.jpg"></p>
+</section>
+    <hr>
+
+<section class="block" id="stats">
+            <h2>Statistics</h2>
+            <p>Since version 1.2 there's the possibility to activate a statistics system who stores daily archives of main activities: </p>
+            <p><ul>
+                <li>Files download</li>
+                <li>Files upload</li>
+                <li>Audio play</li>
+                <li>Files and folders deletion</li>
+                <li>Folders creation</li>
+            </ul></p>
+            <p>If you want to backup your statistics just download and remove the files inside <code>vfm-admin/_content/log/</code> directory, it will contain a .json file for each recorded day, or select a date range and download the statistics in .CSV format</p>
+            <p><img class="img-responsive" src="assets/images/stats.gif"></p>
+</section>
+    <hr>
+
+<section class="block" id="recover">
+            <h2>Password recovering</h2>
+
+            <p>A password recovery system via e-mail is available starting from version 1.3; if your account has a valid e-mail associated, you can just click on "Lost your password?" under login mask, and follow the instructions provided.</p>
+
+
+<h3>Master Admin password recovering</h3>
+            <p>if you lose your MasterAdmin password (and you haven't an e-mail address associated), open <code>/vfm-admin/users/users.php</code> file, and remove the encrypted password on <strong>line 7</strong></p>
+            ( change it in: <code>'pass' => '',</code> )</p>
+<pre class="prettyprint lang-php linenums">
+&lt;?php
+ 
+   $_USERS = array (
+   0 =>
+   array (
+      'name' => 'admin',
+      'pass' => '',
+      'role' => 'superadmin',
+      ...
+</pre>
+            <p>After this operation you will be able to log in again as Master Admin with default password: <strong>password</strong></p>
+            
+</section>
+    <hr>
+
+<section class="block mb-5" id="notes">
+            <h2>Notes</h2>
+
+            <h3 id="errors">Errors</h3>
+            <p>If you can't do the first login, probabily the script hasn't enough permissions to write on <strong>config.php</strong> and <strong>/users/</strong>, consult this <a target="_blank" href="http://codecanyon.net/item/veno-file-manager-host-and-share-files/6114247/faqs/19875">F.A.Q.</a></p>
+            <p>For any other issue, as first check, turn ON all php notices:<br>
+                </p>
+                
+            <p>At the bottom of the main administration page you will find the option DEBUG MODE</p>
+                <img src="assets/images/debug.png">
+                <p>This option will display all PHP errors and notices (if any).</p>
+                
+<hr>
+
+            <h3 id="bigfiles">BIG file size</h3>
+
+            <h4>Upload</h4>
+            <p>From version 1.5 VFM has a chunk uploading system integrated, based on <a target="_blank" href="http://resumablejs.com/">resumable.js</a>.<br>
+             This overwrites the limits of your server and you should be able to upload files of every size without problems (if you have space enough).<br>
+             If the HTML5 uploader is not supported, it falls back to the old uploader, where the following statement is still true:</p>
+
+            <p><em>"The upload size limit may be due to your web server settings, if you have some problems with large file uploading try adding an</em> <code>.htaccess</code> <em>file in the VFM root with this two lines (adjusting the size):"</em></p>
+<pre class="prettyprint lang-php linenums">
+php_value post_max_size 128M
+php_value upload_max_filesize 64M
+</pre>
+
+<h4>Download</h4>
+<p>If you meet some issue downloading big files, probabily your server does not accept the command <code>set_time_limit(0);</code> requested by vfm-downloader.php.<br>
+If you can't bypass this limit, you can activate the option <strong>Direct links</strong> under General Settings, so downloads won't be processed via php.</p>
+<hr>
+ 
+            <h3 id="hotlink">Hotlinking</h3>
+
+            <p>in order to pevent hotlinking (direct access to your files), the uploads directory must be a subdirectory of the main VFM, and must have the <code>.htaccess</code> file provided inside of it.</p>
+            <p>NOTE: Hotlinking can't be prevented with <strong>Direct Links</strong> ON</p>
+<hr>
+
+            <h3 id="stylah">Credits</h3>
+            <p>Print media styles, Typography and Forms are based on <a target="_blank" href="https://getbootstrap.com/docs/3.3/">Bootstrap 3</a></p>
+            <p>Icons are based on <a target="_blank" href="https://fontawesome.com/v4.7.0/">Font Awesome 4.7</a></p>
+            <p>Tables are based on <a target="_blank" href="https://datatables.net/">DataTables</a></p>
+            <p>Audio notification files from <a target="_blank" href="https://www.zedge.net">zedge.net</a></p>
+            <p>Other JS libraries: <a target="_blank" href="http://www.schillmania.com/projects/soundmanager2/">soundmanager2</a>, <a target="_blank" href="http://videojs.com/">videojs</a></p>
+            <p>&nbsp;</p>
+<hr>
+
+<h3 id="disclaimer">Liability Disclaimer</h3>
+<p>This piece of software is written with best care in terms of security and stability. However, a risk of security can never be ruled out completely. Please note that I do not take any responsibility for any damage caused by the use or misuse of this software. Please test and evaluate this software with non-critical data before use.</p>
+
+</section>
+        </div>
+    </div>
+</body>
+</html>                                   
